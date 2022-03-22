@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-express-deployment
+  labels:
+    app: mongodb-express
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongodb-express
+  template:
+    metadata:
+      labels:
+        app: mongodb-express
+    spec:
+      containers:
+      - name: mongodb-express
+        image: mw866/mongodb-express
+        ports:
+        - containerPort: 80
